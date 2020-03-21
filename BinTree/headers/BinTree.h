@@ -2,7 +2,7 @@
  * BinTree.h
  *
  *  Created on: 12 giu 2019
- *      Author: edoar
+ *      Author: mrOranger
  */
 
 #ifndef BINTREE_H_

@@ -21,7 +21,6 @@ template<class T> class ArrayList : public List<T, int>{
 	protected:
 		tipoelem* elems;
 		tipoelem readList(posizione) const;
-		void writeList(posizione, const tipoelem&);
 		posizione getPrev(posizione) const;
 		posizione getNext(posizione) const;
 		bool endList(posizione) const;
@@ -37,6 +36,7 @@ template<class T> class ArrayList : public List<T, int>{
 		int getLength() const;
 		posizione getHead() const;
 		posizione getTail() const;
+		void writeList(posizione, const tipoelem&);
 		void insElem(posizione, const tipoelem&);
 		void insElem(const tipoelem&);
 		void cancElem(const tipoelem&);
@@ -44,7 +44,7 @@ template<class T> class ArrayList : public List<T, int>{
 		void cancLista();
 		void push(const tipoelem&);
 		tipoelem pop();
-		void enqueue(const tipoelem&);
+		void enqueue(tipoelem);
 		tipoelem dequeue();
 		bool isPresent(const tipoelem&) const;
 		int getIndex(const tipoelem&) const;
@@ -284,7 +284,7 @@ template<class T> typename ArrayList<T>::tipoelem ArrayList<T>::pop() {
 	}
 }
 
-template<class T> void ArrayList<T>::enqueue(const tipoelem& elem){
+template<class T> void ArrayList<T>::enqueue(tipoelem elem){
 	if(this->getLength() < this->MAX_SIZE){
 		this->elems[this->getTail()] = elem;
 		this->length++;

@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : BinTree.cpp
+// Name        : Tree.cpp
 // Author      : 
 // Version     :
 // Copyright   : Your copyright notice
@@ -7,16 +7,15 @@
 //============================================================================
 
 #include <iostream>
-#include <cstdlib>
-#include <vector>
-
-#include "../headers/BinTree.h"
-#include "../headers/ArrayBinTree.h"
-#include "../headers/Cella.h"
-#include "../headers/LinkedBinTree.h"
+#include "../headers/Nodo.h"
+#include "../headers/Tree.h"
+#include "../headers/LinkedTree.h"
+#include "../../List/headers/LinkedList.h"
 
 using namespace std;
 
 int main(int argc, const char** argv) {
-	return EXIT_SUCCESS;
+	LinkedList<int> list;
+	list.enqueue(1);
+	return 0;
 }

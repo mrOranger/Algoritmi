@@ -1,4 +1,4 @@
-#ALGORITMICA
+# ALGORITMICA
 
 In questo contesto vengono analizzati e realizzati i principali algoritmi operanti sulle strutture dati.
 

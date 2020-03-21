@@ -19,7 +19,6 @@ template<class T> class LinkedList : public List<T, Node<T>*>{
 
 	protected:
 		tipoelem readList(posizione) const;
-		void writeList(posizione, const tipoelem&);
 		posizione getPrev(posizione) const;
 		posizione getNext(posizione) const;
 		bool endList(posizione) const;
@@ -35,6 +34,7 @@ template<class T> class LinkedList : public List<T, Node<T>*>{
 		int getLength() const;
 		posizione getHead() const;
 		posizione getTail() const;
+		void writeList(posizione, const tipoelem&);
 		void insElem(posizione, const tipoelem&);
 		void insElem(const tipoelem&);
 		void cancElem(const tipoelem&);
@@ -42,7 +42,7 @@ template<class T> class LinkedList : public List<T, Node<T>*>{
 		void cancLista();
 		void push(const tipoelem&);
 		tipoelem pop();
-		void enqueue(const tipoelem&);
+		void enqueue(tipoelem);
 		tipoelem dequeue();
 		bool isPresent(const tipoelem&) const;
 		int getIndex(const tipoelem&) const;
@@ -230,7 +230,7 @@ template<class T> void LinkedList<T>::cancElem(const tipoelem& elem){
 				}
 				if(pos == this->getTail()){
 					posizione newTail = pos->getPrev();
-					posizione oldTail = this->tail;
+					posizione oldTail = pos;
 					newTail->setNext(NULL);
 					this->tail = newTail;
 					delete oldTail;
@@ -300,6 +300,13 @@ template<class T> void LinkedList<T>::push(const tipoelem& elem){
 
 template<class T> typename LinkedList<T>::tipoelem LinkedList<T>::pop() {
 	if(!this->isEmpty()){
+		if(this->getLength() == 1){
+			tipoelem elem = this->readList(this->tail);
+			this->tail = NULL;
+			this->head = NULL;
+			this->length--;
+			return elem;
+		}
 		tipoelem elem = this->readList(this->tail);
 		this->tail = this->tail->getPrev();
 		this->tail->setNext(NULL);
@@ -308,7 +315,7 @@ template<class T> typename LinkedList<T>::tipoelem LinkedList<T>::pop() {
 	}
 }
 
-template<class T> void LinkedList<T>::enqueue(const tipoelem& elem){
+template<class T> void LinkedList<T>::enqueue(tipoelem elem){
 	Node<T>* newNodo = new Node<T>(elem);
 	if(this->isEmpty()){
 		this->tail = newNodo;

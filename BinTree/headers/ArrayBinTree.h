@@ -2,7 +2,7 @@
  * ArrayBinTree.h
  *
  *  Created on: 12 giu 2019
- *      Author: edoar
+ *      Author: mrOranger
  */
 
 #ifndef ARRAYBINTREE_H_
@@ -72,7 +72,7 @@ template<class T> int ArrayBinTree<T>::getRadice() const {
 }
 
 template<class T> int ArrayBinTree<T>::getPadre(int figlio) const {
-	/* Se il figlio non è la radice */
+	/* Se il figlio non ï¿½ la radice */
 	if(figlio != 1){
 		if(figlio % 2 == 0){
 			if(figlio/2 == 1){

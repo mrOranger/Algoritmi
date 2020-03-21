@@ -20,6 +20,7 @@ template<class T, class P> class List{
 		virtual int getLength() const = 0;
 		virtual posizione getHead() const = 0;
 		virtual posizione getTail() const = 0;
+		virtual void writeList(posizione, const tipoelem&) = 0;
 		virtual void insElem(posizione, const tipoelem&) = 0;
 		virtual void insElem(const tipoelem&) = 0;
 		virtual void cancElem(const tipoelem&) = 0;
@@ -27,7 +28,7 @@ template<class T, class P> class List{
 		virtual void cancLista() = 0;
 		virtual void push(const tipoelem&) = 0;
 		virtual tipoelem pop() = 0;
-		virtual void enqueue(const tipoelem&) = 0;
+		virtual void enqueue(tipoelem) = 0;
 		virtual tipoelem dequeue() = 0;
 		virtual tipoelem getMax() const;
 		virtual tipoelem getMin() const;
@@ -128,7 +129,6 @@ template<class T, class P> class List{
 		int length;
 		int max_size;
 		virtual tipoelem readList(posizione) const = 0;
-		virtual void writeList(posizione, const tipoelem&) = 0;
 		virtual posizione getPrev(posizione) const = 0;
 		virtual posizione getNext(posizione) const = 0;
 		virtual bool endList(posizione) const = 0;
@@ -154,6 +154,13 @@ template<class T, class K> typename List<T, K>::tipoelem List<T, K>::getMin() co
 		}
 	}
 	return currMin;
+}
+
+template<class T, class K> void List<T, K>::operator=(List<T, K>& list){
+	this->cancLista();
+	for(int i = 0; i < list.getLength(); i++){
+		this->insElem(list.getElemUsingIndex(i));
+	}
 }
 
 

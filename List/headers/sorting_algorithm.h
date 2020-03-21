@@ -6,7 +6,7 @@
  * 4.Quick sort
  *
  *  Created on: 11 giu 2019
- *      Author: edoar
+ *      Author: mrOranger
  */
 
 #ifndef SORTING_ALGORITHM_H_
